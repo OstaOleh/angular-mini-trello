@@ -1,0 +1,14 @@
+<div class="new-item">
+  <a class="add-new-item" style="cursor: pointer" *ngIf="!open; else opened" (click)="openAddList()">
+    <h4>Add a list...</h4>
+  </a>
+  <ng-template #opened>
+    <div class="add-new-item-box">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input type="text" name="name" class="form-control mb-1" [formControlName]="'listName'">
+      </form>
+      <button class="btn" (click)="closeAddList()">X</button>
+    </div>
+   
+  </ng-template>
+</div>

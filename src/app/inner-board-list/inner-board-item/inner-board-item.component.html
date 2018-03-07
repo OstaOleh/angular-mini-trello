@@ -1,0 +1,17 @@
+<div class="item" droppable (onDrop)="onTaskDrop($event)">
+  <h3 class="item-name">{{board.tasksName}}</h3>
+  <hr>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input type="text" name="name" class="form-control mb-1" [formControlName]="'task'">
+  </form>
+
+  <ul class="tasks list-group"  >
+    <li class="task list-group-item mb-2 list-group-item-success" *ngFor="let task of board.tasks" draggable [dragData]="task">
+      <div class="task-name" [ngClass]="{'done': task.done}">{{task.taskName}}</div>
+      <button *ngIf="!task.done; else completed" class="btn btn-primary" (click)="completeTask(task)">Complete</button>
+      <ng-template #completed>
+        <button class="btn btn-primary" (click)="completeTask(task)">Completed</button>
+      </ng-template>
+    </li>
+  </ul>
+</div>

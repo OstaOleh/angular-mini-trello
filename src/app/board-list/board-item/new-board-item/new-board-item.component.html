@@ -1,0 +1,22 @@
+<a class="new-board-item" *ngIf="!boardState; else open" (click)="openBoard()">
+  <div>
+    <h3>Create a new board ...</h3>
+  </div>
+</a>
+<ng-template #open>
+  <a class="new-board-item">
+    <div class="new-board-item-header">
+      <h3>Creating a board</h3>
+      <button class="btn btn-primary" (click)="closeBoard()">X</button>
+    </div>
+    <hr>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label for="newBoard">What shall we call the board?</label>
+      <input type="text" name="newBoard" [formControlName]="'boardName'" id="newBoard" class="form-control mb-3">
+      <div class="btn-group">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Create</button>
+        <button type="button" class="btn btn-success" (click)="closeBoard()">Cancel</button>
+      </div>
+    </form>
+  </a>
+</ng-template>

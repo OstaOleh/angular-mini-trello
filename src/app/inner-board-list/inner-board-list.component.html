@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col">
+    <app-inner-board-list-name></app-inner-board-list-name>
+  </div>
+</div>
+<div>
+  <div class="row">
+    <div class="col">
+      <div class="board-list">
+        <app-inner-board-item *ngFor="let innerBoard of board.innerBoard" [board]="innerBoard"></app-inner-board-item>
+        <app-new-inner-board-item ></app-new-inner-board-item>
+      </div>
+    </div>
+  </div>
+</div>
